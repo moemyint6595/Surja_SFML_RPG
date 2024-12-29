@@ -15,15 +15,27 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="SourceFIles\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Animation.cpp">
+    <ClCompile Include="SourceFIles\Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="States\State.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="States\GameState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Animation.h">
+    <ClInclude Include="SourceFIles\Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="States\State.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="States\GameState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
