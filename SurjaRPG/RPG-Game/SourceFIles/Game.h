@@ -12,10 +12,17 @@ public:
 	virtual ~Game();
 
 	//Functions
+	void endApplication();
+
+	//Update
 	void updateDt();
 	void updateSFMLEvents();
 	void update();
+
+	//Render
 	void render();
+
+	//Main
 	void run();
 
 public:
@@ -35,9 +42,11 @@ private:
 	sf::RenderWindow* window;
 	sf::Event sfEvent;
 
+	//Time
 	sf::Clock dtClock;
 	float dt;
 
+	//States
 	std::stack<GameState*> states;
 };
 

@@ -15,7 +15,11 @@ public:
 	// Inherited via State
 	void endState() override;
 	void update(const float& dt) override;
+	void updateKeyBinds(const float& dt) override;
 	void render(sf::RenderTarget* target = nullptr) override;
+
+	//Own function----- gonna remove later ??? maybe
+	const bool& GetGameQuit() const;
 
 private:
 

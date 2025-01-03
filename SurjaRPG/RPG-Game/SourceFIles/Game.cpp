@@ -41,7 +41,8 @@ void Game::initStates()
 }
 
 
-//Constructor/Destructor
+//=======================================Constructor/Destructor================================
+
 Game::Game()
 {
 	this->initWindow();
@@ -59,7 +60,14 @@ Game::~Game()
 	}
 }
 
-//Functions
+//=======================================Functions================================
+void Game::endApplication()
+{
+	//Release Application's resources
+}
+
+
+//=======================================Updates================================
 void Game::updateSFMLEvents()
 {
 	while (this->window->pollEvent(this->sfEvent))
@@ -74,7 +82,6 @@ void Game::updateSFMLEvents()
 void Game::updateDt()
 {
 	/*Update dt with the time it takes to update and render for one fram*/
-
 	this->dt = this->dtClock.restart().asSeconds();
 }
 
@@ -85,14 +92,27 @@ void Game::update()
 	//Update
 
 	//Updating Current State
-	if (!this->states.empty())
+	if (!this->states.empty()) {
+
 		this->states.top()->update(this->dt);
+
+		if (this->states.top()->GetGameQuit()) 
+		{
+			this->states.top()->endState();
+			delete this->states.top();
+			this->states.pop();
+		}
+	}
+	else {
+		this->endApplication();
+		this->window->close();
+	}
 
 	//Updating Games 
 
 }
 
-
+//=======================================Render================================
 void Game::render()
 {
 	this->window->clear(sf::Color::Black);
@@ -108,6 +128,8 @@ void Game::render()
 	this->window->display();
 }
 
+
+//=======================================Main================================
 void Game::run()
 {
 	while (this->window->isOpen())
