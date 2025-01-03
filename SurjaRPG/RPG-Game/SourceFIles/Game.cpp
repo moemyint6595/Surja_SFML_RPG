@@ -32,7 +32,12 @@ void Game::initWindow()
 
 void Game::initStates()
 {
-	//this->states.push(new GameState(this->window));
+
+	GameState* currentState = new GameState(this->window);
+
+	//Can create more states and push into stack
+
+	this->states.push(currentState);
 }
 
 
@@ -77,8 +82,14 @@ void Game::update()
 {
 	this->updateSFMLEvents();
 
+	//Update
+
+	//Updating Current State
 	if (!this->states.empty())
 		this->states.top()->update(this->dt);
+
+	//Updating Games 
+
 }
 
 
@@ -86,9 +97,13 @@ void Game::render()
 {
 	this->window->clear(sf::Color::Black);
 
-	//Draw Items
+	//Draw 
+
+	//Drawing Current State's items
 	if (!this->states.empty())
 		this->states.top()->render();
+
+	//Drawing Games items
 
 	this->window->display();
 }

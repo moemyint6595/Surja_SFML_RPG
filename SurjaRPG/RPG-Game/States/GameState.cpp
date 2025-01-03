@@ -22,4 +22,9 @@ void GameState::update(const float& dt)
 
 void GameState::render(sf::RenderTarget* target)
 {
+	if (target != nullptr) 
+	{
+		std::cout << "This is render from game state" << std::endl;
+	}
+	
 }
