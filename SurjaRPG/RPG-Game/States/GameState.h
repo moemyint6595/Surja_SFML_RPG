@@ -21,6 +21,8 @@ public:
 	//Own function----- gonna remove later ??? maybe
 	const bool& GetGameQuit() const;
 
+protected:
+
 private:
 
 };
