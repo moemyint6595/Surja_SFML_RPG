@@ -34,7 +34,7 @@ private:
 	//Initializations
 	void initWindow();
 	void initStates();
-
+	void initKeys();
 	//Functions
 
 private:
@@ -48,6 +48,8 @@ private:
 
 	//States
 	std::stack<GameState*> states;
+
+	std::map<std::string, int> supportedKeys;
 };
 
 #endif
