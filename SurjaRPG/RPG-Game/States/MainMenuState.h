@@ -1,7 +1,8 @@
 #ifndef MAINMENU_H
 #define MAINMENU_H
 
-#include "State.h"
+#include "GameState.h"
+#include "../Components/Button.h"
 
 class MainMenuState :
 	public State
@@ -17,12 +18,21 @@ public:
 	void render(sf::RenderTarget* target = nullptr) override;
 
 private:
-
-private:
-
 	// Inherited via State
 	void initKeybinds() override;
 
+	//Class function
+	void initBackground();
+	void initFonts();
 
+public:
+	//public Variable
+
+private:
+	//private Variable
+	sf::Sprite background;
+	sf::Texture bg_texture;
+
+	sf::Font font;
 };
 #endif // !MAINMENU_H

@@ -137,6 +137,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Components\Button.cpp" />
     <ClCompile Include="Entities\Entity.cpp" />
     <ClCompile Include="States\GameState.cpp" />
     <ClCompile Include="SourceFIles\Game.cpp" />
@@ -145,6 +146,7 @@
     <ClCompile Include="States\State.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Components\Button.h" />
     <ClInclude Include="Entities\Entity.h" />
     <ClInclude Include="States\GameState.h" />
     <ClInclude Include="SourceFIles\Game.h" />

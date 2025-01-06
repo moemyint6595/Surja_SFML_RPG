@@ -18,16 +18,19 @@ public:
 	void updateInput(const float& dt) override;
 	void render(sf::RenderTarget* target = nullptr) override;
 
-public:
-	Entity player;
-
 protected:
 
 private:
-
-
 	// Inherited via State
 	void initKeybinds() override;
+
+public:
+	//public Variable
+	Entity player;
+
+private:
+	//private Variables
+
 
 };
 
