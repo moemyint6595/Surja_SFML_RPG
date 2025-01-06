@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include "../States/GameState.h"
+#include "../States/MainMenuState.h"
 
 class Game
 {
@@ -47,7 +48,7 @@ private:
 	float dt;
 
 	//States
-	std::stack<GameState*> states;
+	std::stack<State*> states;
 
 	std::map<std::string, int> supportedKeys;
 };

@@ -4,7 +4,7 @@
 #include "State.h"
 
 class GameState :
-	State
+	public State
 {
 
 public:
@@ -17,9 +17,6 @@ public:
 	void update(const float& dt) override;
 	void updateInput(const float& dt) override;
 	void render(sf::RenderTarget* target = nullptr) override;
-
-	//Own function----- gonna remove later ??? maybe
-	const bool& GetGameQuit() const;
 
 public:
 	Entity player;

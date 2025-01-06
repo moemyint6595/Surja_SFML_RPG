@@ -141,12 +141,14 @@
     <ClCompile Include="States\GameState.cpp" />
     <ClCompile Include="SourceFIles\Game.cpp" />
     <ClCompile Include="SourceFIles\main.cpp" />
+    <ClCompile Include="States\MainMenuState.cpp" />
     <ClCompile Include="States\State.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entities\Entity.h" />
     <ClInclude Include="States\GameState.h" />
     <ClInclude Include="SourceFIles\Game.h" />
+    <ClInclude Include="States\MainMenuState.h" />
     <ClInclude Include="States\State.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

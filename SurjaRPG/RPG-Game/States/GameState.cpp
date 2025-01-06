@@ -50,15 +50,8 @@ void GameState::updateInput(const float& dt)
 		this->player.move(dt, 0.0f, 1.0f);
 }
 
-
-const bool& GameState::GetGameQuit() const
-{
-	return this->getQuit();
-}
-
 void GameState::update(const float& dt)
 {
-	//std::cout << "This is from game state" << std::endl;
 	this->updateInput(dt);
 }
 

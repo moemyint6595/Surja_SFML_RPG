@@ -47,31 +47,21 @@ void Game::initKeys()
 	}
 
 	ifs.close();
-
-
 	//DEBUG
-	for (auto i : this->supportedKeys)
+	/*for (auto i : this->supportedKeys)
 	{
 		std::cout << i.first << " " << i.second << std::endl;
-	}
-
-	/*this->supportedKeys["Escape"] = sf::Keyboard::Key::Escape;
-	this->supportedKeys["A"] = sf::Keyboard::Key::A;
-	this->supportedKeys["D"] = sf::Keyboard::Key::D;
-	this->supportedKeys["W"] = sf::Keyboard::Key::W;
-	this->supportedKeys["S"] = sf::Keyboard::Key::S;*/
-
-
+	}*/
 }
 
 void Game::initStates()
 {
 
-	GameState* currentState = new GameState(this->window, &this->supportedKeys);
-
+	//GameState* _gameState = new GameState(this->window, &this->supportedKeys);
+	MainMenuState* _mainMenuState = new MainMenuState(this->window, &this->supportedKeys);
 	//Can create more states and push into stack
 
-	this->states.push(currentState);
+	this->states.push(_mainMenuState);
 }
 
 
@@ -132,7 +122,7 @@ void Game::update()
 
 		this->states.top()->update(this->dt);
 
-		if (this->states.top()->GetGameQuit()) 
+		if (this->states.top()->getQuit()) 
 		{
 			this->states.top()->endState();
 			delete this->states.top();
