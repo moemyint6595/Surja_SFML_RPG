@@ -34,5 +34,7 @@ private:
 	sf::Texture bg_texture;
 
 	sf::Font font;
+
+	Button* gamestate_btn;
 };
 #endif // !MAINMENU_H

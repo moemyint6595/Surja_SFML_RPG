@@ -30,23 +30,34 @@ void MainMenuState::initFonts()
 {
 	if (this->font.loadFromFile("./ResourceFiles/assets/Font/arial.ttf")) 
 	{
+		
+	}
+	else 
+	{
 		throw("ERROR : Main menu cound not load font.");
 	}
 }
 
-MainMenuState::MainMenuState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys) 
+/*=========================Constructor/Destruction========================*/
+MainMenuState::MainMenuState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys)
 	: State(window, supportedKeys)
 {
 	this->initKeybinds();
-	this->initBackground();
 	this->initFonts();
+
+	this->gamestate_btn = new Button(
+		100.0f,100.0f,150.0f,50.0f,
+		&this->font, "New Game",
+		sf::Color::Black, sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200) );
+
+	this->initBackground();
 }
 
 MainMenuState::~MainMenuState()
 {
-
+	delete this->gamestate_btn;
 }
-
+/*=========================Constructor/Destruction========================*/
 
 void MainMenuState::endState()
 {
@@ -63,9 +74,11 @@ void MainMenuState::update(const float& dt)
 	this->updateMousePositions();
 	this->updateInput(dt);
 
-	system("cls");
+	this->gamestate_btn->update(this->mousePosView);
+
+	/*system("cls");
 	std::cout << "x =>" << this->mousePosView.x << std::endl;
-	std::cout << "y =>" << this->mousePosView.y << std::endl;
+	std::cout << "y =>" << this->mousePosView.y << std::endl;*/
 }
 
 void MainMenuState::render(sf::RenderTarget* target)
@@ -74,4 +87,6 @@ void MainMenuState::render(sf::RenderTarget* target)
 		target = this->window;
 
 	target->draw(this->background);
+
+	this->gamestate_btn->render(target);
 }
