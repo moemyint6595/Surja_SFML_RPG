@@ -38,24 +38,37 @@ void MainMenuState::initFonts()
 	}
 }
 
+void MainMenuState::initButtons()
+{
+	this->buttons["New_Game"] = new Button(
+		100.0f,100.0f,150.0f,50.0f,
+		&this->font, "New Game",
+		sf::Color::Black, sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200) );
+
+	this->buttons["Quit_Game"] = new Button(
+		100.0f, 200.0f, 150.0f, 50.0f,
+		&this->font, "Quit",
+		sf::Color::Black, sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200));
+}
+
 /*=========================Constructor/Destruction========================*/
 MainMenuState::MainMenuState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys)
 	: State(window, supportedKeys)
 {
 	this->initKeybinds();
 	this->initFonts();
-
-	this->gamestate_btn = new Button(
-		100.0f,100.0f,150.0f,50.0f,
-		&this->font, "New Game",
-		sf::Color::Black, sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200) );
+	this->initButtons();
 
 	this->initBackground();
 }
 
 MainMenuState::~MainMenuState()
 {
-	delete this->gamestate_btn;
+	auto it = this->buttons.begin();
+	for (it = this->buttons.begin(); it != this->buttons.end(); ++it) {
+
+		delete it->second;
+	}
 }
 /*=========================Constructor/Destruction========================*/
 
@@ -69,16 +82,45 @@ void MainMenuState::updateInput(const float& dt)
 	this->checkForQuit();
 }
 
+void MainMenuState::updateButtons()
+{
+
+	//Update all the buttons's state and handles their functions
+	for (auto &keyvalue : this->buttons) 
+	{ 
+		keyvalue.second->update(this->mousePosView);
+	}
+
+	//Quit game
+	if (this->buttons["New_Game"]->isPressed())
+	{
+		//TODO===============
+		//MainMenuState* _MainMenuState = new MainMenuState(this->window, &this->supportedKeys);
+		//this->states.push(_MainMenuState);
+		std::cout << "New game state is started!!!" << std::endl;
+	}
+
+	//Quit game
+	if (this->buttons["Quit_Game"]->isPressed()) 
+	{
+		this->quit = true;
+	}
+}
+
+void MainMenuState::renderButtons(sf::RenderTarget* target)
+{
+	for (auto& keyvalue : this->buttons)
+	{
+		keyvalue.second->render(target);
+	}
+}
+
+
 void MainMenuState::update(const float& dt)
 {
 	this->updateMousePositions();
 	this->updateInput(dt);
-
-	this->gamestate_btn->update(this->mousePosView);
-
-	/*system("cls");
-	std::cout << "x =>" << this->mousePosView.x << std::endl;
-	std::cout << "y =>" << this->mousePosView.y << std::endl;*/
+	this->updateButtons();
 }
 
 void MainMenuState::render(sf::RenderTarget* target)
@@ -87,6 +129,5 @@ void MainMenuState::render(sf::RenderTarget* target)
 		target = this->window;
 
 	target->draw(this->background);
-
-	this->gamestate_btn->render(target);
+	this->renderButtons(target);
 }

@@ -13,11 +13,6 @@ void GameState::initKeybinds()
 		}
 	}
 	ifs.close();
-	/*this->keybinds["CLOSE"] = this->supportedKeys->at("Escape");
-	this->keybinds["MOVE_LEFT"] = this->supportedKeys->at("A");
-	this->keybinds["MOVE_RIGHT"] = this->supportedKeys->at("D");
-	this->keybinds["MOVE_UP"] = this->supportedKeys->at("W");
-	this->keybinds["MOVE_DOWN"] = this->supportedKeys->at("S");*/
 }
 
 GameState::GameState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys)

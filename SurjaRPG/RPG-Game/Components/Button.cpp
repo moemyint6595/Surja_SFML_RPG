@@ -21,28 +21,13 @@ Button::Button(float x, float y, float width, float height, sf::Font* font, std:
 	float y_pos = (shapePosition.y + ( shapePosition.y / 2.0f ) ) - (textSize.height / 2.0f);
 	this->text.setPosition(x_pos,y_pos);*/
 
-	
+	//MyLogic
 	sf::Vector2f textPosition = this->text.getPosition();
 	sf::FloatRect textRect = this->text.getGlobalBounds();
 	sf::FloatRect shapeRect = this->shape.getGlobalBounds();
-
-	std::cout << "shape x position =>" << shapeRect.left << std::endl;
-	std::cout << "shape y position =>" << shapeRect.top << std::endl;
-
-	std::cout << "shape width =>" << shapeRect.width << std::endl;
-	std::cout << "shape height =>" << shapeRect.height << std::endl;
-
-	std::cout << "shape x position with getPos =>" << this->shape.getPosition().x << std::endl;
-	std::cout << "shape y position with getPos =>" << this->shape.getPosition().y << std::endl;
-
-	std::cout << "Text width =>" << textRect.width << std::endl;
-	std::cout << "Text height =>" << textRect.height << std::endl;
-
 	float x_pos = textPosition.x + ( shapeRect.width / 2.0f ) - (textRect.width / 2.0f);
 	float y_pos = textPosition.y + (shapeRect.height / 2.0f) - (textRect.height);
 	this->text.setPosition(x_pos, y_pos);
-
-
 
 	this->idelColor = idelColor;
 	this->hoverColor = hoverColor;
@@ -57,7 +42,7 @@ Button::~Button()
 //==================Accessors==================
 const bool Button::isPressed() const
 {
-	if (this->buttonState == BTN_HOVER)
+	if (this->buttonState == BTN_ACTIVE)
 		return true;
 	return false;
 }
@@ -70,14 +55,7 @@ void Button::update(const sf::Vector2f mousePos)
 	/* Update button core funtionality */
 	this->buttonState = BTN_IDEL;
 
-	/*system("cls");
-	std::cout << "shape x =>" << this->shape.getLocalBounds().left << std::endl;
-	std::cout << "shape y =>" << this->shape.getLocalBounds().top << std::endl;
-
-	std::cout << "mouse x =>" << mousePos.x << std::endl;
-	std::cout << "mouse y =>" << mousePos.y << std::endl;*/
-
-	if (this->shape.getLocalBounds().contains(mousePos))
+	if (this->shape.getGlobalBounds().contains(mousePos))
 	{
 		this->buttonState = BTN_HOVER;
 
@@ -102,8 +80,6 @@ void Button::update(const sf::Vector2f mousePos)
 		this->shape.setFillColor(sf::Color::Red);
 		break;
 	}
-	/*system("cls");
-	std::cout << "BTN STATE =>" << this->buttonState << std::endl;*/
 }
 
 void Button::render(sf::RenderTarget* target)

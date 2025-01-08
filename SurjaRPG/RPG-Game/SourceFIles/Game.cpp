@@ -56,12 +56,10 @@ void Game::initKeys()
 
 void Game::initStates()
 {
-	MainMenuState* _MainMenuState = new MainMenuState(this->window, &this->supportedKeys);
-	GameState* _GameState = new GameState(this->window, &this->supportedKeys);
 	//Can create more states and push into stack
-
+	MainMenuState* _MainMenuState = new MainMenuState(this->window, &this->supportedKeys);
+	
 	this->states.push(_MainMenuState);
-	//this->states.push(_GameState);
 }
 
 

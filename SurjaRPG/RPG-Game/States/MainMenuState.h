@@ -15,7 +15,11 @@ public:
 	void endState() override;
 	void update(const float& dt) override;
 	void updateInput(const float& dt) override;
-	void render(sf::RenderTarget* target = nullptr) override;
+	void render(sf::RenderTarget* target = NULL) override;
+
+	//ClassFunctions
+	void updateButtons();
+	void renderButtons(sf::RenderTarget* target = NULL);
 
 private:
 	// Inherited via State
@@ -24,6 +28,7 @@ private:
 	//Class function
 	void initBackground();
 	void initFonts();
+	void initButtons();
 
 public:
 	//public Variable
@@ -35,6 +40,8 @@ private:
 
 	sf::Font font;
 
-	Button* gamestate_btn;
+	/*Button* gamestate_btn;*/
+	std::map<std::string, Button*> buttons;
+
 };
 #endif // !MAINMENU_H
